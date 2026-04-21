@@ -1,0 +1,27 @@
+# Web Framework
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Environment
+python-dotenv
+
+# AI / LLM
+groq
+google-genai
+langchain-google-genai
+
+# Embeddings & Vector DB
+sentence-transformers
+chromadb
+
+# Document Parsing
+unstructured[pdf]
+pymupdf
+pypdf
+
+# Text Splitting
+langchain-text-splitters
+
+# Retry Logic
+tenacity

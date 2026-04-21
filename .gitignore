@@ -36,5 +36,5 @@ Thumbs.db
 
 *.pdf
 *.xlsx
-*.txt
 *.docx
+# Note: *.txt removed to allow requirements.txt to be tracked
