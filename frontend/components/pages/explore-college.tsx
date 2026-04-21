@@ -5,6 +5,7 @@ import { useAppStore } from '@/lib/store';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import ChatInterface from '@/components/chat-interface';
+import API_BASE_URL from '@/lib/api';
 
 const COLLEGES = [
   'IIT Delhi',
@@ -52,7 +53,7 @@ export default function ExploreCollegePage() {
     setIsLoading(true);
 
     try {
-      const resp = await fetch('http://localhost:8000/ask-college-questions', {
+      const resp = await fetch(`${API_BASE_URL}/ask-college-questions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +86,7 @@ export default function ExploreCollegePage() {
     setIsLoading(true);
 
     try {
-      const resp = await fetch('http://localhost:8000/college-details', {
+      const resp = await fetch(`${API_BASE_URL}/college-details`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

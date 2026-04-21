@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Upload, FileText, CheckCircle, XCircle, LogOut, BookOpen } from 'lucide-react';
+import API_BASE_URL from '@/lib/api';
 
 const EXAMS = ['JEE', 'NEET', 'GRE', 'CAT'];
 
@@ -49,7 +50,7 @@ export default function AdminPage() {
         const formData = new FormData();
         formData.append('file', entry.file);
         // exam sent as query param to match FastAPI route signature
-        const resp = await fetch(`http://localhost:8000/upload-documents?exam=${encodeURIComponent(selectedExam)}`, {
+        const resp = await fetch(`${API_BASE_URL}/upload-documents?exam=${encodeURIComponent(selectedExam)}`, {
           method: 'POST',
           body: formData,
         });

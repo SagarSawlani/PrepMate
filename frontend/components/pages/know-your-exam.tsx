@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Mic } from 'lucide-react';
 import ChatInterface from '@/components/chat-interface';
+import API_BASE_URL from '@/lib/api';
 
 const EXAMS = ['JEE', 'NEET', 'GRE', 'CAT'];
 
@@ -27,7 +28,7 @@ export default function KnowYourExamPage() {
     setIsLoading(true);
 
     try {
-      const resp = await fetch('http://localhost:8000/query', {
+      const resp = await fetch(`${API_BASE_URL}/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

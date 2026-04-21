@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import API_BASE_URL from '@/lib/api';
 import {
   ChevronDown,
   ChevronUp,
@@ -346,7 +347,7 @@ export default function BestCollegeForYouPage() {
         extra: formData.extra,
       });
 
-      const resp = await fetch(`http://localhost:8000/colleges-recommendations?${params.toString()}`, {
+      const resp = await fetch(`${API_BASE_URL}/colleges-recommendations?${params.toString()}`, {
         method: 'POST',
       });
 
@@ -392,7 +393,7 @@ export default function BestCollegeForYouPage() {
 
     try {
       const params = new URLSearchParams({ colleges_list: collegesSummary });
-      const resp = await fetch(`http://localhost:8000/discussion?${params.toString()}`, {
+      const resp = await fetch(`${API_BASE_URL}/discussion?${params.toString()}`, {
         method: 'POST',
       });
 
