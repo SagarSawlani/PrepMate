@@ -10,6 +10,14 @@ python-dotenv
 groq
 google-genai
 langchain-google-genai
+langchain-groq
+langchain-core
+
+# Agentic Framework
+langgraph
+
+# Web Search
+tavily-python
 
 # Embeddings & Vector DB
 sentence-transformers
