@@ -99,8 +99,8 @@ def add_to_chroma(chunks, embeddings, exam, filename):
     ids=[str(i) for i in range(len(chunks))]
   )
 
-def store_memory(query, answer):
-    memory_collection = chroma_client.get_or_create_collection(name="conversational_memory")
+def store_memory(query, answer, collection_name):
+    memory_collection = chroma_client.get_or_create_collection(name=collection_name)
 
     text = f"User: {query}\nAssistant: {answer}"
     embedding = model.encode([text])[0]
@@ -112,7 +112,7 @@ def store_memory(query, answer):
         ids=[str(hash(text))]
     )
 
-def retrieve_memory(query, k=5):
+def retrieve_memory(query, k=8):
     memory_collection = chroma_client.get_or_create_collection(name="conversational_memory")
 
     query_embedding = model.encode([query])[0]
@@ -185,6 +185,6 @@ async def ask_question(request: QueryRequest):
   print(f"Memory: {memory}")
   print(f"System Prompt: {system_prompt}")
   answer = llm_call(system_prompt, query, context)
-  store_memory(query, answer)
+  store_memory(query, answer, "rag_memory")
   print(f"answer: {answer}")
   return {"answer": answer}

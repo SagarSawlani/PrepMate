@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useAppStore, useAuthStore } from '@/lib/store';
 import { Button } from '@/components/ui/button';
-import { Menu, X, LogOut, BookOpen, Building2 } from 'lucide-react';
+import { Menu, X, LogOut, BookOpen, Building2, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export function Sidebar() {
@@ -11,7 +11,7 @@ export function Sidebar() {
   const { currentPage, setCurrentPage, clearChat } = useAppStore();
   const { logout, user } = useAuthStore();
 
-  const handleNavigation = (page: 'know-exam' | 'explore-college') => {
+  const handleNavigation = (page: 'know-exam' | 'explore-college' | 'best-college-for-you') => {
     setCurrentPage(page);
     clearChat();
     setIsOpen(false);
@@ -82,6 +82,18 @@ export function Sidebar() {
             >
               <Building2 size={20} />
               <span className="font-medium">Explore a College</span>
+            </button>
+
+            <button
+              onClick={() => handleNavigation('best-college-for-you')}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+                currentPage === 'best-college-for-you'
+                  ? 'bg-sidebar-primary text-sidebar-primary-foreground shadow-md'
+                  : 'text-sidebar-foreground hover:bg-sidebar-accent/20'
+              }`}
+            >
+              <Sparkles size={20} />
+              <span className="font-medium">Best College For You</span>
             </button>
           </nav>
 

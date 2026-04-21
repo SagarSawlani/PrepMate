@@ -16,11 +16,11 @@ interface AuthStore {
 }
 
 interface AppStore {
-  currentPage: 'know-exam' | 'explore-college';
+  currentPage: 'know-exam' | 'explore-college' | 'best-college-for-you';
   selectedExam: string;
   selectedCollege: string;
   chatHistory: Array<{ role: 'user' | 'bot'; content: string }>;
-  setCurrentPage: (page: 'know-exam' | 'explore-college') => void;
+  setCurrentPage: (page: 'know-exam' | 'explore-college' | 'best-college-for-you') => void;
   setSelectedExam: (exam: string) => void;
   setSelectedCollege: (college: string) => void;
   addChatMessage: (role: 'user' | 'bot', content: string) => void;

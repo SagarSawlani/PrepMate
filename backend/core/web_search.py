@@ -18,11 +18,11 @@ router = APIRouter()
 def web_search(prompt, max_retries=3, retry_delay=2):
   
   grounding_tool = types.Tool(
-      google_search=types.GoogleSearch()
+    google_search=types.GoogleSearch()
   )
 
   config = types.GenerateContentConfig(
-      tools=[grounding_tool]
+    tools=[grounding_tool]
   )
 
   response = None
@@ -99,7 +99,7 @@ async def college_details(request: CollegeDetailsRequest):
     - Return ONLY the JSON — no markdown fences, no explanation text.
   """
   result = web_search(prompt)
-  store_memory(prompt, result)
+  store_memory(prompt, result, "web_search_memory")
   return {"answer": result}
 
 
@@ -122,5 +122,5 @@ async def college_questions(request: CollegeQuestionRequest):
     Provide sources inline using [source name] format at the end.
     Query: """
   result = web_search(system_prompt + query)
-  store_memory(query, result)
+  store_memory(query, result, "web_search_memory")
   return {"answer": result}
